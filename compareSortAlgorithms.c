@@ -1,6 +1,7 @@
 #include <time.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
 
 int extraMemoryAllocated;
 
@@ -50,14 +51,34 @@ void insertionSort(int* pData, int n)
 // extraMemoryAllocated counts bytes of extra memory allocated
 void bubbleSort(int* pData, int n)
 {
-	
+	int i,j,temp;
+	for(i = 0; i < n-1; i++){
+		for(j = 0; j < n-i-1; j++){
+			if(pData[j] > pData[j+1]){
+				temp = pData[j];
+				pData[j] = pData[j+1];
+				pData[j+1] = temp;
+			}
+		}
+	}
+
 }
 
 // implement selection sort
 // extraMemoryAllocated counts bytes of extra memory allocated
 void selectionSort(int* pData, int n)
 {
-	
+	int i,j, min_index, temp;
+	for(i = 0; i < n-1; i++){
+		min_index = i;
+		for(j = i+1; j < n; j++){
+			if(pData[j] < pData[min_index]){
+				temp = pData[j];
+				pData[j] = pData[min_index];
+				pData[min_index] = temp;
+			}
+		}
+	}
 }
 
 // parses input file to an integer array
